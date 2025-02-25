@@ -29,11 +29,9 @@ jobs:
     - run: npm ci
     - run: npm update webpack
     - run: |
-            if [[ "$(node -v)" =~ ^v16 ] or [ "$(node -v)" =~ ^v14 ]]; then
+            if [[ "$(node -v)" =~ ^v16 || "$(node -v)" =~ ^v14 ]]; then
               export NODE_OPTIONS=--openssl-legacy-provider
             fi
             npm run build --if-present
-
-    - run: npm run build --if-present
     - run: npm test
     
